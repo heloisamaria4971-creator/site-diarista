@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início | Diarista Profissional na Baixada Santista</title>
+    <!-- Conexão com o arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Cabeçalho / Menu -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-bucket"></i>
+                    <i class="fa-solid fa-broom"></i>
+                    <i class="fa-solid fa-feather-pointed"></i>
+                    Limpeza & Cuidado <span class="badge-me">Me</span>
+                </a>
+            </h1>
+            <!-- Botão do Menu Hambúrguer para Celular -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="sobre.html">Sobre Mim</a></li>
+                    <li><a href="apartamentos.html">Apartamentos</a></li>
+                    <li><a href="servicos.html">Serviços & Tarifas</a></li>
+                    <li><a href="contato.html" class="btn-nav">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Destaque / Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-image">
+                <img src="foto-diarista.jpeg" alt="Foto da Diarista Profissional">
+            </div>
+            <div class="hero-text">
+                <div class="hero-promo-badge"><i class="fa-solid fa-star"></i> Promoção Especial R$ 199,00</div>
+                <h2>Limpeza Profissional para o Seu Apartamento!</h2>
+                <p>Atendimento exclusivo em <strong>Mongaguá, Praia Grande, São Vicente e Santos</strong>. Aproveite a diária promocional por <strong>R$ 199,00</strong>!</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5513997014782?text=Olá,%20gostaria%20de%20agendar%20a%20limpeza%20na%20promoção%20de%20R$%20199!" target="_blank" class="btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Promoção Padrão (R$ 199)
+                    </a>
+                    <a href="https://wa.me/5513997014782?text=Olá!%20Gostaria%20de%20agendar%20a%20limpeza%20de%20R$%20199%20e%20incluir%20a%20limpeza%20interna%20de%20armários%20por%20+R$%2020%20por%20cômodo.%20Podemos%20combinar?" target="_blank" class="btn-secondary btn-promo-full">
+                        <i class="fa-solid fa-door-open"></i> Promoção + Armários por Dentro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Caixa do Serviço Adicional de Armário por Cômodo e Avisos -->
+    <section class="home-addon-section">
+        <div class="container">
+            <div class="addon-box">
+                <div class="addon-header">
+                    <i class="fa-solid fa-door-open"></i>
+                    <div>
+                        <h4>Limpeza Interna de Armários (+R$ 20,00 por cômodo)</h4>
+                        <p>A limpeza de R$ 199,00 inclui de padrão a higienização da parte <strong>externa</strong> dos armários. Se desejar a limpeza por dentro, é cobrado um adicional de apenas <strong>R$ 20,00 por cômodo</strong> desejado (ex: cozinha, quarto, etc.).</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/5513997014782?text=Olá!%20Gostaria%20de%20agendar%20a%20limpeza%20de%20R$%20199%20e%20incluir%20a%20limpeza%20interna%20de%20armários%20por%20+R$%2020%20por%20cômodo.%20Podemos%20combinar?" target="_blank" class="btn-whatsapp btn-addon">
+                    <i class="fa-brands fa-whatsapp"></i> Solicitar Limpeza Interna (+R$ 20/cômodo)
+                </a>
+            </div>
+
+            <div class="warning-box">
+                <i class="fa-solid fa-circle-info"></i> <strong>Aviso:</strong> Não realizamos serviços de passar roupas.
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cidades Atendidas -->
+    <section class="highlights">
+        <div class="container">
+            <h2>Cidades Atendidas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Região de Atendimento</h3>
+                    <p>Atendimento nas cidades de <strong>Mongaguá, Praia Grande, São Vicente e Santos</strong>.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>Experiência em Apartamentos</h3>
+                    <p>Especialista na rotina e cuidados de apartamentos residenciais e de temporada.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>Opção de Hora Flexível</h3>
+                    <p>Caso prefira um trabalho pontual, também é possível combinar valor por hora no WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Diarista Profissional | Mongaguá, Praia Grande, São Vicente e Santos</p>
+    </footer>
+
+    <!-- Conexão com o arquivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

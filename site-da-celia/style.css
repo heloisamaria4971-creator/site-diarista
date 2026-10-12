@@ -1,0 +1,532 @@
+/* ========================================================
+   CONFIGURAÇÕES GERAIS E RESET
+   ======================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #fcfaff;
+    color: #333333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ========================================================
+   CABEÇALHO E MENU DE NAVEGAÇÃO
+   ======================================================== */
+header {
+    background-color: #4a154b;
+    color: #ffffff;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.logo a i {
+    font-size: 1rem;
+}
+
+.badge-me {
+    font-size: 0.7rem;
+    background-color: #d0bfff;
+    color: #2d0b31;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 4px;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-nav {
+    background-color: #d0bfff !important;
+    color: #2d0b31 !important;
+    font-weight: bold;
+}
+
+/* ========================================================
+   CABEÇALHOS DE PÁGINA INTERNA
+   ======================================================== */
+.page-header {
+    background-color: #5b1d60;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.page-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    font-size: 0.95rem;
+    color: #f3e8ff;
+}
+
+/* ========================================================
+   SEÇÃO HERO (INÍCIO)
+   ======================================================== */
+.hero {
+    background: linear-gradient(135deg, #5b1d60 0%, #3b0a40 100%);
+    color: #ffffff;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-promo-badge {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #2d0b31;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #f3e8ff;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ========================================================
+   BOTÕES PADRÃO
+   ======================================================== */
+.btn-primary, .btn-secondary, .btn-whatsapp, .btn-promo-full {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: #25d366;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #d0bfff;
+    color: #2d0b31;
+}
+
+.btn-promo-full {
+    background-color: #6b21a8;
+    color: #ffffff !important;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: #ffffff;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 15px;
+}
+
+/* ========================================================
+   CAIXAS ADICIONAIS E AVISOS
+   ======================================================== */
+.home-addon-section {
+    padding: 20px 0;
+}
+
+.addon-box {
+    padding: 18px;
+    background-color: #f3e8ff;
+    border: 2px dashed #6b21a8;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.addon-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+}
+
+.addon-header i {
+    font-size: 1.8rem;
+    color: #6b21a8;
+}
+
+.addon-header h4 {
+    color: #4a154b;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+.addon-header p {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.warning-box {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #fff4e5;
+    border-left: 4px solid #ff9800;
+    border-radius: 4px;
+    color: #663c00;
+    font-size: 0.9rem;
+}
+
+/* ========================================================
+   PÁGINA DE APARTAMENTOS (GALERIA DE FOTOS AJUSTADA)
+   ======================================================== */
+.gallery-section {
+    padding: 30px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    background-color: #f0f0f0;
+    display: block;
+}
+
+.gallery-info {
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #4a154b;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+/* ========================================================
+   SEÇÕES SOBRE MIM, SERVIÇOS E CONTATO
+   ======================================================== */
+.about-detail, .price-info, .contact-section {
+    padding: 40px 0;
+}
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-img {
+    display: flex;
+    justify-content: center;
+}
+
+.about-img img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #4a154b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h3 {
+    color: #4a154b;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.highlights {
+    padding: 40px 0;
+}
+
+.highlights h2 {
+    text-align: center;
+    color: #4a154b;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666666;
+    margin-bottom: 25px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-top: 4px solid #6b21a8;
+}
+
+.card i {
+    font-size: 2rem;
+    color: #6b21a8;
+    margin-bottom: 10px;
+}
+
+.contact-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+    font-size: 3.5rem;
+    color: #25d366;
+    margin-bottom: 15px;
+}
+
+.phone-number {
+    font-size: 1.4rem;
+    color: #4a154b;
+    margin: 15px 0;
+}
+
+.location-text {
+    margin-top: 20px;
+    color: #666666;
+}
+
+/* ========================================================
+   RODAPÉ
+   ======================================================== */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+/* ========================================================
+   REGRAS OBRIGATÓRIAS PARA CELULAR (Ajuste Mobile)
+   ======================================================== */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    .logo a {
+        font-size: 0.9rem;
+    }
+
+    .logo a i {
+        font-size: 0.85rem;
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #4a154b;
+        padding: 15px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+
+    nav.active {
+        display: block !important;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+    }
+
+    .hero-content, .about-flex {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .hero-image img, .about-img img {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .hero-text h2, .about-text h3 {
+        font-size: 1.4rem;
+    }
+
+    .hero-text p, .about-text p {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-secondary, .btn-promo-full {
+        width: 100%;
+    }
+
+    .addon-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Galeria no Celular */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-card img {
+        max-height: 280px;
+    }
+}
