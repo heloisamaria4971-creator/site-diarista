@@ -1,6 +1,5 @@
+
 module.exports = async (req, res) => {
-  // Configurações de CORS para permitir requisições do seu front-end
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -14,7 +13,7 @@ module.exports = async (req, res) => {
     });
   }
 
-  // Tabela oficial de pacotes e preços do seu site
+  // Preços definidos exclusivamente no servidor
   const pacotes = {
     "4h": {
       titulo: "Faxina promocional - 4 horas",
@@ -40,16 +39,18 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Lê a chave das Variáveis de Ambiente da Vercel
-    const token = process.env.ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
+    const token =
+      process.env.ACCESS_TOKEN ||
+      process.env.MP_ACCESS_TOKEN;
 
     if (!token) {
+      console.error("ACCESS_TOKEN não configurado na Vercel.");
+
       return res.status(500).json({
-        erro: "O pagamento ainda não foi configurado."
+        erro: "Pagamento não configurado no servidor."
       });
     }
 
-    // Cria a preferência de pagamento na API do Mercado Pago
     const resposta = await fetch(
       "https://api.mercadopago.com/checkout/preferences",
       {
@@ -61,12 +62,14 @@ module.exports = async (req, res) => {
         body: JSON.stringify({
           items: [
             {
+              id: pacote,
               title: servico.titulo,
               quantity: 1,
               currency_id: "BRL",
               unit_price: servico.valor
             }
-          ]
+          ],
+          statement_descriptor: "LIMPEZA CUIDADO"
         })
       }
     );
@@ -74,10 +77,32 @@ module.exports = async (req, res) => {
     const dados = await resposta.json();
 
     if (!resposta.ok) {
-      console.error("Erro Mercado Pago:", dados);
+      // Registra os detalhes no servidor, sem expor o token.
+      console.error("Erro Mercado Pago:", {
+        status: resposta.status,
+        mensagem: dados.message,
+        codigo: dados.error,
+        causas: dados.cause
+      });
 
       return res.status(502).json({
-        erro: "Não foi possível iniciar o pagamento."
+        erro: dados.message ||
+          "O Mercado Pago recusou a criação do pagamento.",
+        codigo: dados.error || "erro_mercado_pago",
+        detalhes: Array.isArray(dados.cause)
+          ? dados.cause.map(causa => ({
+              codigo: causa.code,
+              descricao: causa.description
+            }))
+          : []
+      });
+    }
+
+    if (!dados.init_point) {
+      console.error("Checkout criado sem init_point.");
+
+      return res.status(502).json({
+        erro: "O Mercado Pago não retornou o link de pagamento."
       });
     }
 
@@ -85,8 +110,9 @@ module.exports = async (req, res) => {
       id: dados.id,
       checkout_url: dados.init_point
     });
+
   } catch (erro) {
-    console.error("Erro ao criar pagamento:", erro);
+    console.error("Erro ao criar pagamento:", erro.message);
 
     return res.status(500).json({
       erro: "Erro interno ao criar o pagamento."
