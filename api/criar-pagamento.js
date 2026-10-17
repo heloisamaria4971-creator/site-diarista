@@ -15,16 +15,16 @@ module.exports = async (req, res) => {
 
   const pacotes = {
     "4h": {
-      titulo: "Faxina promocional - 4 horas",
-      valor: 149.90
+      titulo: "Limpeza Residencial - 4 horas",
+      valor: 210.00
     },
     "6h": {
-      titulo: "Faxina - 6 horas",
-      valor: 340.00
+      titulo: "Limpeza Residencial - 6 horas",
+      valor: 240.00
     },
     "8h": {
-      titulo: "Faxina - 8 horas",
-      valor: 440.00
+      titulo: "Limpeza Residencial - 8 horas",
+      valor: 270.00
     }
   };
 
@@ -38,7 +38,8 @@ module.exports = async (req, res) => {
       });
     }
 
-    const token = process.env.MP_ACCESS_TOKEN;
+    // Aceita tanto ACCESS_TOKEN quanto MP_ACCESS_TOKEN
+    const token = process.env.ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
 
     if (!token) {
       return res.status(500).json({
