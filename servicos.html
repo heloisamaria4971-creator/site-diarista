@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Serviços & Tarifas | Diarista Profissional</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,6 +14,7 @@
 
     <header>
         <div class="container nav-container">
+
             <h1 class="logo">
                 <a href="index.html">
                     <i class="fa-solid fa-bucket"></i>
@@ -33,6 +37,7 @@
                     <li><a href="contato.html" class="btn-nav">Contato</a></li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
@@ -46,66 +51,128 @@
     <section class="price-info">
         <div class="container">
 
-            <!-- Promoção especial: 4 horas -->
+            <!-- PROMOÇÃO: FAXINA DE 4 HORAS -->
             <div class="price-box promo-box">
+
                 <div class="promo-tag">
-                    <i class="fa-solid fa-fire"></i> PROMOÇÃO ESPECIAL
+                    <i class="fa-solid fa-fire"></i>
+                    PROMOÇÃO ESPECIAL
                 </div>
 
                 <i class="fa-solid fa-tags promo-icon"></i>
+
                 <h3>Faxina de 4 horas</h3>
 
-                <div class="price-amount">R$ 149<span>,90</span></div>
+                <div class="price-amount">
+                    R$ 149<span>,90</span>
+                </div>
 
                 <p class="price-desc">
                     Pacote promocional de faxina com duração de 4 horas.
                 </p>
 
-                <a href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20promocional%20de%204%20horas%20por%20R%24%20149%2C90."
-                   target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <button
+                    type="button"
+                    onclick="pagarPacote('4h')"
+                    class="btn-whatsapp"
+                    style="cursor: pointer; border: none;">
+
+                    <i class="fa-solid fa-credit-card"></i>
+                    Pagar R$ 149,90
+                </button>
+
+                <a
+                    href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20promocional%20de%204%20horas%20por%20R%24%20149%2C90."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp"
+                    style="margin-top: 10px;">
+
                     <i class="fa-brands fa-whatsapp"></i>
-                    Agendar promoção de 4 horas
+                    Dúvidas e agendamento
                 </a>
+
             </div>
 
-            <!-- Diária normal: 6 horas -->
+            <!-- FAXINA DE 6 HORAS -->
             <div class="price-box" style="margin-top: 30px;">
+
                 <i class="fa-solid fa-clock"></i>
+
                 <h3>Faxina de 6 horas</h3>
 
-                <div class="price-amount">R$ 340<span>,00</span></div>
+                <div class="price-amount">
+                    R$ 340<span>,00</span>
+                </div>
 
                 <p class="price-desc">
                     Diária de duração intermediária para a limpeza do seu apartamento.
                 </p>
 
-                <a href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20de%206%20horas%20por%20R%24%20340%2C00."
-                   target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <button
+                    type="button"
+                    onclick="pagarPacote('6h')"
+                    class="btn-whatsapp"
+                    style="cursor: pointer; border: none;">
+
+                    <i class="fa-solid fa-credit-card"></i>
+                    Pagar R$ 340,00
+                </button>
+
+                <a
+                    href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20de%206%20horas%20por%20R%24%20340%2C00."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp"
+                    style="margin-top: 10px;">
+
                     <i class="fa-brands fa-whatsapp"></i>
-                    Agendar faxina de 6 horas
+                    Dúvidas e agendamento
                 </a>
+
             </div>
 
-            <!-- Diária normal: 8 horas -->
+            <!-- FAXINA DE 8 HORAS -->
             <div class="price-box" style="margin-top: 30px;">
+
                 <i class="fa-solid fa-calendar-check"></i>
+
                 <h3>Faxina de 8 horas</h3>
 
-                <div class="price-amount">R$ 440<span>,00</span></div>
+                <div class="price-amount">
+                    R$ 440<span>,00</span>
+                </div>
 
                 <p class="price-desc">
                     Diária de maior duração para quem precisa de mais tempo de limpeza.
                 </p>
 
-                <a href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20de%208%20horas%20por%20R%24%20440%2C00."
-                   target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <button
+                    type="button"
+                    onclick="pagarPacote('8h')"
+                    class="btn-whatsapp"
+                    style="cursor: pointer; border: none;">
+
+                    <i class="fa-solid fa-credit-card"></i>
+                    Pagar R$ 440,00
+                </button>
+
+                <a
+                    href="https://wa.me/5513997014782?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20a%20faxina%20de%208%20horas%20por%20R%24%20440%2C00."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp"
+                    style="margin-top: 10px;">
+
                     <i class="fa-brands fa-whatsapp"></i>
-                    Agendar faxina de 8 horas
+                    Dúvidas e agendamento
                 </a>
+
             </div>
 
-            <!-- Serviços incluídos -->
+            <!-- SERVIÇOS INCLUÍDOS -->
             <div class="services-list">
+
                 <h3>Serviços Incluídos na Faxina:</h3>
 
                 <ul>
@@ -113,14 +180,17 @@
                         <i class="fa-solid fa-check"></i>
                         Higienização de banheiros, cozinha e áreas
                     </li>
+
                     <li>
                         <i class="fa-solid fa-check"></i>
                         Aspiração ou varrição e passagem de pano no piso
                     </li>
+
                     <li>
                         <i class="fa-solid fa-check"></i>
                         Limpeza externa de móveis, eletrodomésticos e armários
                     </li>
+
                     <li>
                         <i class="fa-solid fa-check"></i>
                         Retirada de lixos e arrumação geral
@@ -131,15 +201,21 @@
                     <i class="fa-solid fa-circle-info"></i>
                     <strong>Aviso:</strong> Não realizamos serviços de passar roupas.
                 </div>
+
             </div>
 
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 - Diarista Profissional | Mongaguá, Praia Grande, São Vicente e Santos</p>
+        <p>
+            &copy; 2026 - Diarista Profissional |
+            Mongaguá, Praia Grande, São Vicente e Santos
+        </p>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
+
