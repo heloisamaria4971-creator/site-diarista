@@ -1,4 +1,5 @@
 module.exports = async (req, res) => {
+  // Configurações de CORS para permitir requisições do seu front-end
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -13,18 +14,19 @@ module.exports = async (req, res) => {
     });
   }
 
+  // Tabela oficial de pacotes e preços do seu site
   const pacotes = {
     "4h": {
-      titulo: "Limpeza Residencial - 4 horas",
-      valor: 210.00
+      titulo: "Faxina promocional - 4 horas",
+      valor: 149.90
     },
     "6h": {
-      titulo: "Limpeza Residencial - 6 horas",
-      valor: 240.00
+      titulo: "Faxina - 6 horas",
+      valor: 340.00
     },
     "8h": {
-      titulo: "Limpeza Residencial - 8 horas",
-      valor: 270.00
+      titulo: "Faxina - 8 horas",
+      valor: 440.00
     }
   };
 
@@ -38,7 +40,7 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Aceita tanto ACCESS_TOKEN quanto MP_ACCESS_TOKEN
+    // Lê a chave das Variáveis de Ambiente da Vercel
     const token = process.env.ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
 
     if (!token) {
@@ -47,6 +49,7 @@ module.exports = async (req, res) => {
       });
     }
 
+    // Cria a preferência de pagamento na API do Mercado Pago
     const resposta = await fetch(
       "https://api.mercadopago.com/checkout/preferences",
       {
