@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({ erro: "Pacote inválido." });
     }
 
-    // Use apenas UM nome de variável para evitar confusão
+    // Use apenas UM nome de env var para não ter confusão
     const token = (process.env.MP_ACCESS_TOKEN || "").trim();
 
     console.log("Token carregado:", Boolean(token));
@@ -50,25 +50,34 @@ module.exports = async (req, res) => {
       });
     }
 
-    const resposta = await fetch("https://api.mercadopago.com/checkout/preferences", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          {
-            id: pacote,
-            title: servico.titulo,
-            quantity: 1,
-            currency_id: "BRL",
-            unit_price: servico.valor,
-          },
-        ],
-        statement_descriptor: "LIMPEZA CUIDADO",
-      }),
+    // Diagnóstico: valida se o token está autorizado em geral
+    const me = await fetch("https://api.mercadopago.com/users/me", {
+      headers: { Authorization: `Bearer ${token}` },
     });
+    console.log("users/me status:", me.status);
+
+    // Cria preferência
+    const resposta = await fetch(
+      "https://api.mercadopago.com/checkout/preferences",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: [
+            {
+              id: pacote,
+              title: servico.titulo,
+              quantity: 1,
+              currency_id: "BRL",
+              unit_price: servico.valor,
+            },
+          ],
+        }),
+      }
+    );
 
     const dados = await resposta.json();
 
@@ -82,13 +91,8 @@ module.exports = async (req, res) => {
 
       return res.status(502).json({
         erro: dados?.message || "O Mercado Pago recusou a criação do pagamento.",
-        codigo: dados?.error || "erro_mercado_pago",
-        detalhes: Array.isArray(dados?.cause)
-          ? dados.cause.map((causa) => ({
-              codigo: causa.code,
-              descricao: causa.description,
-            }))
-          : [],
+        // incluo o status do /users/me na resposta para você ver no Network também
+        debug: { users_me_status: me.status },
       });
     }
 
@@ -101,7 +105,7 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({
       id: dados.id,
-      checkout_url: dados.init_point, // no teste de Checkout Pro, use este link no frontend
+      checkout_url: dados.init_point,
     });
   } catch (erro) {
     console.error("Erro ao criar pagamento:", erro?.message || erro);
