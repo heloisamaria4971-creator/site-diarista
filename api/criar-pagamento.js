@@ -13,7 +13,6 @@ module.exports = async (req, res) => {
     });
   }
 
-  // Preços definidos exclusivamente no servidor
   const pacotes = {
     "4h": {
       titulo: "Faxina promocional - 4 horas",
@@ -39,15 +38,21 @@ module.exports = async (req, res) => {
       });
     }
 
-    const token =
+    const token = (
       process.env.ACCESS_TOKEN ||
-      process.env.MP_ACCESS_TOKEN;
+      process.env.MP_ACCESS_TOKEN ||
+      ""
+    ).trim();
+
+    console.log("Token carregado:", Boolean(token));
+    console.log(
+      "Prefixo do token:",
+      token ? token.slice(0, 7) : "ausente"
+    );
 
     if (!token) {
-      console.error("ACCESS_TOKEN não configurado na Vercel.");
-
       return res.status(500).json({
-        erro: "Pagamento não configurado no servidor."
+        erro: "Token do Mercado Pago não configurado na Vercel."
       });
     }
 
@@ -56,7 +61,7 @@ module.exports = async (req, res) => {
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -77,12 +82,11 @@ module.exports = async (req, res) => {
     const dados = await resposta.json();
 
     if (!resposta.ok) {
-      // Registra os detalhes no servidor, sem expor o token.
       console.error("Erro Mercado Pago:", {
         status: resposta.status,
-        mensagem: dados.message,
-        codigo: dados.error,
-        causas: dados.cause
+        mensagem: dados.message || null,
+        codigo: dados.error || null,
+        causas: dados.cause || null
       });
 
       return res.status(502).json({
